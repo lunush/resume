@@ -1,10 +1,18 @@
 <script lang="ts">
+  import { Router, Link, Route } from 'svelte-routing'
   import Background from './Background.svelte';
+  import Greetings from './Greetings.svelte';
+  import ErrorPage from './ErrorPage.svelte';
+
+  export let url = '';
 </script>
 
-<Background>
-  <h1>Hi</h1>
-</Background>
+<Router {url}>
+  <Background>
+    <Route path="/" component="{Greetings}" />
+    <Route path="*" component="{ErrorPage}" />
+  </Background>
+</Router>
 
 <style>
   :global(html),
@@ -12,12 +20,7 @@
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-  }
-
-  h1 {
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+    padding: 0;
+    margin: 0;
   }
 </style>
-

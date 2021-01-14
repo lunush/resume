@@ -28,27 +28,21 @@ const [stars1, stars2, stars3] = [generateStarsPosition(700),
 
 <style>
   main {
-    overflow: hidden;
+    overflow-x: hidden;
     height: 100vh;
     width: 100vw;
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
   }
 
   .background {
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-    left: 0%;
-    top: 0%;
     position: absolute;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     z-index: -1;
     transform: translateZ(-15) scale(15);
-    background: radial-gradient(ellipse at center, #ddd 0%, #fff 100%)
+    background: radial-gradient(ellipse at bottom, #eee 0%, #fff 100%)
   }
 
   @media (min-width: 640px) {
