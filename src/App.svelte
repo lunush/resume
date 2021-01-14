@@ -1,17 +1,21 @@
 <script lang="ts">
-  import { Router, Link, Route } from 'svelte-routing'
-  import Background from './Background.svelte';
-  import Greetings from './Greetings.svelte';
+  import { Router, Route } from 'svelte-routing'
+  import Layout from './Layout.svelte'
   import ErrorPage from './ErrorPage.svelte';
+  import Greetings from './Greetings.svelte';
+  import About from './About.svelte'
+  import Portfolio from './Portfolio.svelte'
 
   export let url = '';
 </script>
 
 <Router {url}>
-  <Background>
+<Layout>
+    <Route path="/portfolio" component="{Portfolio}" />
+    <Route path="/about" component="{About}" />
     <Route path="/" component="{Greetings}" />
     <Route path="*" component="{ErrorPage}" />
-  </Background>
+</Layout>
 </Router>
 
 <style>

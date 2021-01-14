@@ -6,6 +6,6 @@
   <div
     class="flex flex-col flex-wrap content-center justify-center w-screen h-screen text-center"
   >
-    <h1 class="text-6xl font-thin text-gray-900 uppercase">Hi</h1>
+    <h1 class="text-6xl font-thin text-gray-900 uppercase">About</h1>
   </div>
 </Section>
