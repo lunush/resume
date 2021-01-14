@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Router, Link, Route, link } from 'svelte-routing';
   import Background from './Background.svelte';
 </script>

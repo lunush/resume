@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 const getRandomNumber = (min, max) => {
   return Math.round(Math.random() * (max - min) + min);
 }

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Section from './Section.svelte';
 </script>
 
