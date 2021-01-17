@@ -4,11 +4,13 @@
 
 <Section>
   <div
-    class="flex flex-col flex-wrap justify-center w-screen h-screen text-center align-middle rounded-lg"
+    class="flex flex-wrap justify-evenly w-screen h-screen text-center content-center rounded-lg"
   >
-    <div class="absolute w-2/5 h-2/5 right-20 top-40">
+    <div>
+      <div class="text-gray-900 text-6xl">Notes</div>
+    </div>
+    <div class="video">
       <video
-        id="posty"
         class="object-cover"
         src="assets/video/notes.mp4"
         preload="auto"
@@ -18,3 +20,10 @@
     </div>
   </div>
 </Section>
+
+<style>
+  .video {
+    width: 600px;
+    height: 600px;
+  }
+</style>
