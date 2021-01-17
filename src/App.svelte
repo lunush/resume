@@ -5,12 +5,14 @@
   import Greetings from './Greetings.svelte';
   import About from './About.svelte'
   import Portfolio from './Portfolio.svelte'
+  import Notes from './Notes.svelte'
 
   export let url = '';
 </script>
 
 <Router {url}>
 <Layout>
+    <Route path="/notes" component="{Notes}" />
     <Route path="/portfolio" component="{Portfolio}" />
     <Route path="/about" component="{About}" />
     <Route path="/" component="{Greetings}" />

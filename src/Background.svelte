@@ -1,29 +1,35 @@
 <script lang="ts">
-const getRandomNumber = (min, max) => {
-  return Math.round(Math.random() * (max - min) + min);
-}
+  const getRandomNumber = (min, max) => {
+    return Math.round(Math.random() * (max - min) + min);
+  };
 
-const generateStarsPosition = (number) => {
-  let result = ''
+  const generateStarsPosition = number => {
+    let result = '';
 
-  for(let i = 0; i < number; i++) {
-    result += ` #222 ${getRandomNumber(0, 3000)}px ${getRandomNumber(0, 3000)}px,`
-  }
+    for (let i = 0; i < number; i++) {
+      result += ` #222 ${getRandomNumber(0, 2000)}px ${getRandomNumber(
+        0,
+        2000
+      )}px,`;
+    }
 
-  return result.substring(0, result.length - 1)
-}
+    return result.substring(0, result.length - 1);
+  };
 
-const [stars1, stars2, stars3] = [generateStarsPosition(700),
-  generateStarsPosition(400), generateStarsPosition(100)]
+  const [stars1, stars2, stars3] = [
+    generateStarsPosition(400),
+    generateStarsPosition(200),
+    generateStarsPosition(50),
+  ];
 </script>
 
 <main>
   <div class="background">
-    <div id="stars1" style="box-shadow: {stars1}"/>
-    <div id="stars2" style="box-shadow: {stars2}"/>
-    <div id="stars3" style="box-shadow: {stars3}"/>
+    <div id="stars1" style="box-shadow: {stars1}"></div>
+    <div id="stars2" style="box-shadow: {stars2}"></div>
+    <div id="stars3" style="box-shadow: {stars3}"></div>
   </div>
-  <slot></slot>
+  <slot />
 </main>
 
 <style>
@@ -38,17 +44,7 @@ const [stars1, stars2, stars3] = [generateStarsPosition(700),
     height: 100vh;
     width: 100vw;
     position: absolute;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
     z-index: -1;
-    transform: translateZ(-15) scale(15);
-    background: radial-gradient(ellipse at bottom, #eee 0%, #fff 100%)
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 
   #stars1 {

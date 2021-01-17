@@ -1,18 +1,54 @@
 <script lang="ts">
+  import { Link } from 'svelte-routing';
   import Section from './Section.svelte';
+  import Cursor from './Cursor.svelte';
+  import PortfolioLink from './PortfolioLink.svelte';
+
+  let isWorkPreviewVisible = false;
+  let hoveredLink;
+  let currentVideo;
+
+  const toggleWorkPreview = () =>
+    (isWorkPreviewVisible = !isWorkPreviewVisible);
+
+  const handleLinkHover = title => (hoveredLink = title);
+
+  const setCurrentVideo = title => (currentVideo = title);
 </script>
 
 <Section>
   <div class="flex flex-col content-center justify-center w-screen h-screen">
-    <h1 class="mb-12 text-3xl font-thin text-center text-gray-900 uppercase">
+    <Cursor
+      isWorkPreviewVisible="{isWorkPreviewVisible}"
+      isOnLink="{hoveredLink}"
+      currentVideo="{currentVideo}"
+    />
+    <h1 class="text-3xl font-thin text-center text-gray-900 uppercase">
       Some of my works
     </h1>
     <div
-      class="flex flex-wrap content-center justify-around w-screen text-center"
+      on:mouseover="{toggleWorkPreview}"
+      on:mouseout="{toggleWorkPreview}"
+      class="flex flex-wrap content-center justify-around w-screen text-center h-80"
     >
-      <h1 class="text-5xl font-thin text-gray-900 uppercase">Posty</h1>
-      <h1 class="text-5xl font-thin text-gray-900 uppercase">Bixov</h1>
-      <h1 class="text-5xl font-thin text-gray-900 uppercase">Notes</h1>
+      <PortfolioLink
+        title="posty"
+        hoveredLink="{hoveredLink}"
+        handleLinkHover="{handleLinkHover}"
+        setCurrentVideo="{setCurrentVideo}"
+      />
+      <PortfolioLink
+        title="bixov"
+        hoveredLink="{hoveredLink}"
+        handleLinkHover="{handleLinkHover}"
+        setCurrentVideo="{setCurrentVideo}"
+      />
+      <PortfolioLink
+        title="notes"
+        hoveredLink="{hoveredLink}"
+        handleLinkHover="{handleLinkHover}"
+        setCurrentVideo="{setCurrentVideo}"
+      />
     </div>
   </div>
 </Section>
