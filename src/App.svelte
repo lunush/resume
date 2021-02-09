@@ -26,10 +26,8 @@
 <Router url="{url}">
   <Layout setFloatingVideoVisibility="{setFloatingVideoVisibility}">
     <PortfolioWorkVideo
-      setFloatingVideoVisibility="{setFloatingVideoVisibility}"
       isWorkPreviewVisible="{isWorkPreviewVisible}"
       isOnLink="{hoveredLink}"
-      currentVideo="{currentVideo}"
       isFloatingVideoVisible="{isFloatingVideoVisible}"
     />
     <Route path="/portfolio">
@@ -42,10 +40,14 @@
       />
     </Route>
     <Route path="/notes"
-      ><PortfolioWork setFloatingVideoVisibility="{setFloatingVideoVisibility}" />
+      ><PortfolioWork
+        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+      />
     </Route>
     <Route path="/posty"
-      ><PortfolioWork setFloatingVideoVisibility="{setFloatingVideoVisibility}" />
+      ><PortfolioWork
+        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+      />
     </Route>
     <Route path="/about" component="{About}" />
     <Route path="/" component="{Greetings}" />
