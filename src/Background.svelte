@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   const getRandomNumber = (min, max) => {
     return Math.round(Math.random() * (max - min) + min);
   };
@@ -24,11 +24,13 @@
 </script>
 
 <main>
+  <!--
   <div class="background">
     <div id="stars1" style="box-shadow: {stars1}"></div>
     <div id="stars2" style="box-shadow: {stars2}"></div>
     <div id="stars3" style="box-shadow: {stars3}"></div>
   </div>
+  -->
   <slot />
 </main>
 
@@ -37,14 +39,18 @@
     overflow-x: hidden;
     height: 100vh;
     width: 100vw;
+    perspective: 1px;
   }
 
   .background {
     overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+    height: 200vh;
+    width: 200vw;
     position: absolute;
     z-index: -1;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: translateZ(100px) scale(5);
   }
 
   #stars1 {

@@ -1,36 +1,37 @@
-<script lang="ts">
-  import { fly } from 'svelte/transition';
-  import { Router, Link, Route, link } from 'svelte-routing';
+<script>
+  import { fade } from 'svelte/transition';
+  import { Link } from 'svelte-routing';
   import Background from './Background.svelte';
 
+  export let setFloatingVideoVisibility;
   let visible = false;
 
   setTimeout(() => {
     visible = true;
-  }, 0);
+  }, 500);
 </script>
 
-<div class="w-screen h-screen overflow-hidden">
-  <Background>
-    {#if visible}
-      <div
-        transition:fly="{{ y: -50, duration: 1500 }}"
-        class="w-screen h-screen overflow-hidden"
-      >
-        <div class="absolute flex content-center justify-between w-full h-8">
-          <Link
-            to="/portfolio"
-            class="m-4 text-xl font-light text-gray-900 no-underline hover:no-underline hover:text-gray-500 visited:text-gray-900"
-          >Portfolio</Link
-          >
-          <Link
-            to="/about"
-            class="m-4 text-xl font-light text-gray-900 no-underline hover:no-underline hover:text-gray-500 visited:text-gray-900"
-          >About</Link
-          >
-        </div>
-        <slot />
+{#if visible}
+  <div
+    transition:fade="{{ duration: 1000 }}"
+    class="w-screen h-screen overflow-hidden"
+  >
+    <Background>
+      <div class="absolute z-10 flex content-center justify-between w-full h-8">
+        <Link
+          to="/portfolio"
+          on:click="{() => setFloatingVideoVisibility(true)}"
+          class="m-4 text-xl font-light text-gray-900 no-underline hover:no-underline hover:text-gray-500 visited:text-gray-900"
+        >Portfolio</Link
+        >
+        <Link
+          to="/about"
+          on:click="{() => setFloatingVideoVisibility(true)}"
+          class="m-4 text-xl font-light text-gray-900 no-underline hover:no-underline hover:text-gray-500 visited:text-gray-900"
+        >About</Link
+        >
       </div>
-    {/if}
-  </Background>
-</div>
+      <slot />
+    </Background>
+  </div>
+{/if}

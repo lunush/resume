@@ -1,54 +1,47 @@
-<script lang="ts">
+<script>
   import { Link } from 'svelte-routing';
-  import Section from './Section.svelte';
-  import Cursor from './Cursor.svelte';
+  import { onDestroy } from 'svelte';
+  import { fade } from 'svelte/transition';
   import PortfolioLink from './PortfolioLink.svelte';
 
-  let isWorkPreviewVisible = false;
-  let hoveredLink;
-  let currentVideo;
+  export let hoveredLink;
+  export let setWorkVisibility;
+  export let setFloatingVideoVisibility;
+  export let handleLinkHover;
+  export let setCurrentVideo;
 
-  const toggleWorkPreview = () =>
-    (isWorkPreviewVisible = !isWorkPreviewVisible);
-
-  const handleLinkHover = title => (hoveredLink = title);
-
-  const setCurrentVideo = title => (currentVideo = title);
+  onDestroy(() => {
+    setWorkVisibility(false);
+    handleLinkHover('');
+  });
 </script>
 
-<Section>
-  <div class="flex flex-col content-center justify-center w-screen h-screen">
-    <Cursor
-      isWorkPreviewVisible="{isWorkPreviewVisible}"
-      isOnLink="{hoveredLink}"
-      currentVideo="{currentVideo}"
+<div
+  in:fade="{{ delay: 500, duration: 500 }}"
+  out:fade="{{ duration: 500 }}"
+  class="flex flex-col content-center justify-center w-screen h-screen"
+>
+  <h1 class="text-3xl font-thin text-center text-gray-900 uppercase">
+    Some of my works
+  </h1>
+  <div
+    on:mouseover="{setWorkVisibility(true)}"
+    on:mouseout="{setWorkVisibility(false)}"
+    class="flex flex-wrap content-center justify-around w-screen text-center h-80"
+  >
+    <PortfolioLink
+      title="posty"
+      hoveredLink="{hoveredLink}"
+      handleLinkHover="{handleLinkHover}"
+      setCurrentVideo="{setCurrentVideo}"
+      setFloatingVideoVisibility="{setFloatingVideoVisibility}"
     />
-    <h1 class="text-3xl font-thin text-center text-gray-900 uppercase">
-      Some of my works
-    </h1>
-    <div
-      on:mouseover="{toggleWorkPreview}"
-      on:mouseout="{toggleWorkPreview}"
-      class="flex flex-wrap content-center justify-around w-screen text-center h-80"
-    >
-      <PortfolioLink
-        title="posty"
-        hoveredLink="{hoveredLink}"
-        handleLinkHover="{handleLinkHover}"
-        setCurrentVideo="{setCurrentVideo}"
-      />
-      <PortfolioLink
-        title="bixov"
-        hoveredLink="{hoveredLink}"
-        handleLinkHover="{handleLinkHover}"
-        setCurrentVideo="{setCurrentVideo}"
-      />
-      <PortfolioLink
-        title="notes"
-        hoveredLink="{hoveredLink}"
-        handleLinkHover="{handleLinkHover}"
-        setCurrentVideo="{setCurrentVideo}"
-      />
-    </div>
+    <PortfolioLink
+      title="notes"
+      hoveredLink="{hoveredLink}"
+      handleLinkHover="{handleLinkHover}"
+      setCurrentVideo="{setCurrentVideo}"
+      setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+    />
   </div>
-</Section>
+</div>
