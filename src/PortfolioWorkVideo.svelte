@@ -16,6 +16,7 @@
   onMount(() => {
     videoElement = document.getElementById('video');
     videoAnchor = document.getElementById('video-anchor');
+    console.log(videoElement, videoAnchor);
 
     // transform: translate(-50%, -50%)
     videoCenterX = Math.round(videoElement.offsetWidth / 2);
@@ -59,6 +60,8 @@
     : 'transition-all duration-1000 ease-in-out transform';
 
   $: isRound = isFloatingVideoVisible ? 'rounded-full' : '';
+
+  $: portfolioWorkContent = isFloatingVideoVisible ? 'hidden' : 'flex';
 </script>
 
 <svelte:window
@@ -82,21 +85,23 @@
         src="assets/video/notes.mp4"
         preload="auto"
         loop
-        autoplay
-      ></video>
+        autoplay></video>
     </div>
   </div>
 
   <!-- Portfolio Work Content -->
-  <div class="h-screen w-screen flex justify-center items-center">
+  <div
+    class="h-screen w-screen justify-center items-center
+    {portfolioWorkContent}"
+  >
     <div
       class="px-8 py-16 flex flex-col w-full h-full max-w-screen-3xl max-h-screen-3xl"
     >
       <div class="w-full h-full flex flex-row flex-grow">
-        <div class="h-full w-full bg-green-900">Work Description</div>
-        <div id="video-anchor" class="h-full w-full bg-red-900"></div>
+        <div class="h-full w-full">Work Description</div>
+        <div id="video-anchor" class="h-full w-full"></div>
       </div>
-      <div class="w-full h-64 flex-none bg-yellow-900">Used Technologies</div>
+      <div class="w-full h-64 flex-none">Used Technologies</div>
     </div>
   </div>
 </div>
