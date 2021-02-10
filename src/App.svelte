@@ -25,7 +25,7 @@
 </script>
 
 <Router url="{url}">
-  <Layout setFloatingVideoVisibility="{setFloatingVideoVisibility}">
+  <Layout>
     <PortfolioWorkVideo
       videoAnchor="{videoAnchor}"
       isWorkPreviewVisible="{isWorkPreviewVisible}"

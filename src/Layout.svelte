@@ -1,7 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
 
-  export let setFloatingVideoVisibility;
   let visible = false;
 
   setTimeout(() => {
