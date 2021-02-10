@@ -1,6 +1,6 @@
 <script>
   import { Link } from 'svelte-routing';
-  import { onDestroy } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import PortfolioLink from './PortfolioLink.svelte';
 
@@ -9,6 +9,10 @@
   export let setFloatingVideoVisibility;
   export let handleLinkHover;
   export let setCurrentVideo;
+
+  onMount(() => {
+    setFloatingVideoVisibility(true);
+  });
 
   onDestroy(() => {
     setWorkVisibility(false);

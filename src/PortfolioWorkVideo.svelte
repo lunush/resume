@@ -16,7 +16,6 @@
   onMount(() => {
     videoElement = document.getElementById('video');
     videoAnchor = document.getElementById('video-anchor');
-    console.log(videoElement, videoAnchor);
 
     // transform: translate(-50%, -50%)
     videoCenterX = Math.round(videoElement.offsetWidth / 2);
