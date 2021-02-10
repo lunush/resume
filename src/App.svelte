@@ -2,8 +2,6 @@
   import { Router, Route, Link } from 'svelte-routing';
   import Layout from './Layout.svelte';
   import ErrorPage from './ErrorPage.svelte';
-  import Greetings from './Greetings.svelte';
-  import About from './About.svelte';
   import Portfolio from './Portfolio.svelte';
   import PortfolioWork from './PortfolioWork.svelte';
   import PortfolioWorkVideo from './PortfolioWorkVideo.svelte';
