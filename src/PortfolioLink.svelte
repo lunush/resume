@@ -12,7 +12,7 @@
 
 <div
   on:mouseover="{() => setCurrentVideo(title)}"
-  class="blend flex flex-wrap content-center justify-center w-1/3 h-full z-10"
+  class="blend flex flex-wrap content-center justify-center w-full h-full z-10"
 >
   <div
     on:mouseover="{() => handleLinkHover(title)}"
@@ -22,7 +22,7 @@
       to="/{title}"
       on:click="{() => setFloatingVideoVisibility(false)}"
       class="text-5xl font-thin {isInverted} no-underline uppercase link hover:no-underline visited:{isInverted}"
-    >{title}</Link
+      >{title}</Link
     >
   </div>
 </div>
