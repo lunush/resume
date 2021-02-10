@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Octarine';
+  font-weight: 400;
+  src: url('assets/fonts/OctarineFree/Octarine-Light.otf');
+}
+
+@font-face {
+  font-family: 'Octarine';
+  font-weight: 900;
+  src: url('assets/fonts/OctarineFree/Octarine-Bold.otf');
+}

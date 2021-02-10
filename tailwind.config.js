@@ -2,6 +2,13 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ['Octarine'],
+      serif: ['Octarine'],
+      mono: ['Octarine'],
+      display: ['Octarine'],
+      body: ['Octarine'],
+    },
     extend: {
       maxWidth: {
         'screen-3xl': '1920px',

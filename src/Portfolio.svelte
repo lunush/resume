@@ -21,9 +21,8 @@
   out:fade="{{ duration: 500 }}"
   class="flex flex-col content-center justify-center w-screen h-screen"
 >
-  <h1 class="text-3xl font-thin text-center text-gray-900 uppercase">
-    Hi there <snap class="wave">👋</snap>! Please have a look at some of my
-    works
+  <h1 class="text-3xl text-center text-gray-900">
+    Hi there<span class="wave">👋</span>! Please have a look at some of my works
   </h1>
   <div
     on:mouseover="{setWorkVisibility(true)}"
