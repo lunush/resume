@@ -8,11 +8,14 @@
 
   export let url = '';
   let isWorkPreviewVisible = false;
-  let hoveredLink;
-  let currentVideo = 'notes';
   let isFloatingVideoVisible = true;
+  let currentVideo = 'notes';
+  let hoveredLink;
+  let videoAnchor;
 
   const setFloatingVideoVisibility = value => (isFloatingVideoVisible = value);
+
+  const setVideoAnchor = value => (videoAnchor = value);
 
   const setWorkVisibility = value => (isWorkPreviewVisible = value);
 
@@ -24,17 +27,20 @@
 <Router url="{url}">
   <Layout setFloatingVideoVisibility="{setFloatingVideoVisibility}">
     <PortfolioWorkVideo
+      videoAnchor="{videoAnchor}"
       isWorkPreviewVisible="{isWorkPreviewVisible}"
       isOnLink="{hoveredLink}"
       isFloatingVideoVisible="{isFloatingVideoVisible}"
     />
     <Route path="/notes"
       ><PortfolioWork
+        setVideoAnchor="{setVideoAnchor}"
         setFloatingVideoVisibility="{setFloatingVideoVisibility}"
       />
     </Route>
     <Route path="/posty"
       ><PortfolioWork
+        setVideoAnchor="{setVideoAnchor}"
         setFloatingVideoVisibility="{setFloatingVideoVisibility}"
       />
     </Route>

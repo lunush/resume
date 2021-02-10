@@ -26,7 +26,7 @@
   class="flex flex-col content-center justify-center w-screen h-screen"
 >
   <h1 class="blend text-4xl text-center text-gray-900 z-10">
-    Hi there<span class="wave">👋</span>!
+    Hi there<span class="wave">👋</span>! I am a web developer
   </h1>
   <p class="blend text-2xl text-center text-gray-900 z-10">
     Please have a look at some of my works
