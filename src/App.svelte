@@ -30,15 +30,6 @@
       isOnLink="{hoveredLink}"
       isFloatingVideoVisible="{isFloatingVideoVisible}"
     />
-    <Route path="/portfolio">
-      <Portfolio
-        setWorkVisibility="{setWorkVisibility}"
-        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
-        handleLinkHover="{handleLinkHover}"
-        setCurrentVideo="{setCurrentVideo}"
-        hoveredLink="{hoveredLink}"
-      />
-    </Route>
     <Route path="/notes"
       ><PortfolioWork
         setFloatingVideoVisibility="{setFloatingVideoVisibility}"
@@ -49,8 +40,15 @@
         setFloatingVideoVisibility="{setFloatingVideoVisibility}"
       />
     </Route>
-    <Route path="/about" component="{About}" />
-    <Route path="/" component="{Greetings}" />
+    <Route path="/">
+      <Portfolio
+        setWorkVisibility="{setWorkVisibility}"
+        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+        handleLinkHover="{handleLinkHover}"
+        setCurrentVideo="{setCurrentVideo}"
+        hoveredLink="{hoveredLink}"
+      />
+    </Route>
     <Route path="*" component="{ErrorPage}" />
   </Layout>
 </Router>
