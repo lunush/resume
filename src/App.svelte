@@ -8,8 +8,9 @@
 
   export let url = '';
   let isWorkPreviewVisible = false;
-  let isFloatingVideoVisible = true;
-  let visible = false;
+  let isFloatingVideoVisible = false;
+  let isAppVisible = false;
+  let isPortfolioWorkFadeAnimated = false;
   let currentVideo = 'notes';
   let hoveredLink;
   let videoAnchor;
@@ -25,12 +26,16 @@
   const setCurrentVideo = title => (currentVideo = title);
 
   setTimeout(() => {
-    visible = true;
+    isAppVisible = true;
   }, 500);
+
+  setTimeout(() => {
+    isPortfolioWorkFadeAnimated = true;
+  }, 1000);
 </script>
 
 <Router url="{url}">
-  {#if visible}
+  {#if isAppVisible}
     <div
       transition:fade="{{ duration: 1000 }}"
       class="w-screen h-screen overflow-hidden"
@@ -43,12 +48,14 @@
       />
       <Route path="/notes"
         ><PortfolioWork
+          isPortfolioWorkFadeAnimated="{isPortfolioWorkFadeAnimated}"
           setVideoAnchor="{setVideoAnchor}"
           setFloatingVideoVisibility="{setFloatingVideoVisibility}"
         />
       </Route>
       <Route path="/posty"
         ><PortfolioWork
+          isPortfolioWorkFadeAnimated="{isPortfolioWorkFadeAnimated}"
           setVideoAnchor="{setVideoAnchor}"
           setFloatingVideoVisibility="{setFloatingVideoVisibility}"
         />

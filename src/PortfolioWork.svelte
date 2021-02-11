@@ -3,17 +3,22 @@
   import { fade } from 'svelte/transition';
   import { Link } from 'svelte-routing';
 
+  export let isPortfolioWorkFadeAnimated;
   export let setFloatingVideoVisibility;
   export let setVideoAnchor;
+
+  let fadeDelay = 2000;
 
   onMount(() => {
     setVideoAnchor(document.getElementById('video-anchor'));
     setFloatingVideoVisibility(false);
   });
+
+  $: if (!isPortfolioWorkFadeAnimated) fadeDelay = 0;
 </script>
 
 <div
-  in:fade="{{ delay: 1500, duration: 500 }}"
+  in:fade="{{ delay: fadeDelay, duration: 500 }}"
   out:fade="{{ duration: 500 }}"
   class="flex h-screen w-screen justify-center items-center"
 >

@@ -8,6 +8,7 @@
   export let isOnLink;
 
   let videoElement;
+  let isAnimated = false;
   let videoCenterX = 0;
   let videoCenterY = 0;
   let videoLeft = 0;
@@ -19,6 +20,10 @@
     // transform: translate(-50%, -50%)
     videoCenterX = Math.round(videoElement.offsetWidth / 2);
     videoCenterY = Math.round(videoElement.offsetHeight / 2);
+
+    setTimeout(() => {
+      isAnimated = true;
+    }, 200);
   });
 
   const setVideoPositionRelativeToVideoAnchorCenter = () => {
@@ -28,7 +33,6 @@
 
     videoCenterX = Math.round(videoElement.offsetWidth / 2);
     videoCenterY = Math.round(videoElement.offsetHeight / 2);
-    console.log(videoElement.offsetWidth);
 
     videoLeft = videoAnchorCenterX - videoCenterX;
     videoTop = videoAnchorCenterY - videoCenterY;
@@ -42,9 +46,12 @@
   };
 
   $: if (!isFloatingVideoVisible) {
-    setTimeout(() => {
-      setVideoPositionRelativeToVideoAnchorCenter();
-    }, 1000);
+    setTimeout(
+      () => {
+        setVideoPositionRelativeToVideoAnchorCenter();
+      },
+      isAnimated ? 1000 : 0
+    );
   }
 
   $: scale = isFloatingVideoVisible
@@ -55,9 +62,15 @@
       : '0'
     : '1';
 
-  $: video = isFloatingVideoVisible
+  $: isAnimatedMovement = isFloatingVideoVisible
     ? ''
-    : 'transition-all duration-1000 ease-in-out transform';
+    : isAnimated
+    ? 'transition-all duration-1000 ease-in-out'
+    : '';
+
+  $: isAnimatedScaling = isAnimated
+    ? 'transition-all duration-1000 ease-in-out'
+    : '';
 
   $: isRound = isFloatingVideoVisible ? 'rounded-full' : '';
 </script>
@@ -69,12 +82,12 @@
 
 <div class="fixed">
   <div
-    class="absolute {video}"
+    class="absolute {isAnimatedMovement}"
     style="transform: translate({videoLeft}px, {videoTop}px);"
   >
     <div
       id="video"
-      class="w-96 h-96 xl:w-150 xl:h-150 border border-gray-200 pointer-events-none {isRound} overflow-hidden transition-all duration-1000 ease-in-out"
+      class="w-96 h-96 xl:w-150 xl:h-150 border border-gray-200 pointer-events-none overflow-hidden {isAnimatedScaling} {isRound}"
       style="transform: scale({scale})"
     >
       <video
