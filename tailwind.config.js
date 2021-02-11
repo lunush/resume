@@ -16,6 +16,7 @@ module.exports = {
       maxHeight: { 'screen-3xl': '1080px' },
       spacing: {
         120: '30rem',
+        150: '37.5rem',
       },
     },
   },

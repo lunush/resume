@@ -11,16 +11,17 @@
   });
 </script>
 
-<div class="w-screen h-screen">
-  <div class="h-screen w-screen justify-center items-center">
-    <div
-      class="px-8 py-16 flex flex-col w-full h-full max-w-screen-3xl max-h-screen-3xl"
-    >
-      <div class="w-full h-full flex flex-row flex-grow">
-        <div class="h-full w-full">Work Description</div>
-        <div id="video-anchor" class="h-full w-full"></div>
+<div class="flex h-screen w-screen justify-center items-center">
+  <div class="flex flex-col w-full h-full max-w-screen-3xl max-h-screen-3xl">
+    <div class="w-full h-full flex">
+      <div class="h-full w-full flex flex-col justify-center items-center">
+        <h1 class="mb-8 text-5xl text-gray-900 text-center">Notes</h1>
+        <p class="px-8 text-2xl text-gray-900 text-center">
+          A very simple note-taking app. It is a progressive web app (PWA) with
+          persistent storage, so it can be used without internet connection.
+        </p>
       </div>
-      <div class="w-full h-64 flex-none">Used Technologies</div>
+      <div id="video-anchor" class="h-full w-full mr-16"></div>
     </div>
   </div>
 </div>

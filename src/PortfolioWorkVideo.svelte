@@ -26,6 +26,10 @@
     const videoAnchorCenterX = videoAnchorRect.left + videoAnchorRect.width / 2;
     const videoAnchorCenterY = videoAnchorRect.top + videoAnchorRect.height / 2;
 
+    videoCenterX = Math.round(videoElement.offsetWidth / 2);
+    videoCenterY = Math.round(videoElement.offsetHeight / 2);
+    console.log(videoElement.offsetWidth);
+
     videoLeft = videoAnchorCenterX - videoCenterX;
     videoTop = videoAnchorCenterY - videoCenterY;
   };
@@ -46,8 +50,8 @@
   $: scale = isFloatingVideoVisible
     ? isWorkPreviewVisible
       ? isOnLink
-        ? '.7'
-        : '.4'
+        ? '.5'
+        : '.3'
       : '0'
     : '1';
 
@@ -64,14 +68,13 @@
 />
 
 <div class="fixed">
-  <!-- Floating video -->
   <div
     class="absolute {video}"
     style="transform: translate({videoLeft}px, {videoTop}px);"
   >
     <div
       id="video"
-      class="w-120 h-120 border border-black pointer-events-none {isRound} overflow-hidden transition-all duration-1000 ease-in-out"
+      class="w-96 h-96 xl:w-150 xl:h-150 border border-gray-200 pointer-events-none {isRound} overflow-hidden transition-all duration-1000 ease-in-out"
       style="transform: scale({scale})"
     >
       <video

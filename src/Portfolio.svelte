@@ -23,33 +23,39 @@
 <div
   in:fade="{{ delay: 500, duration: 500 }}"
   out:fade="{{ duration: 500 }}"
-  class="flex flex-col content-center justify-center w-screen h-screen"
+  class="flex items-center justify-center w-screen h-screen"
 >
-  <h1 class="blend text-4xl text-center text-gray-900 z-10">
-    Hi there<span class="wave">👋</span>! I am a web developer
-  </h1>
-  <p class="blend text-2xl text-center text-gray-900 z-10">
-    Please have a look at some of my works
-  </p>
   <div
-    on:mouseover="{setWorkVisibility(true)}"
-    on:mouseout="{setWorkVisibility(false)}"
-    class="flex content-center justify-around w-screen text-center h-1/2"
+    class="h-full w-full flex flex-col items-center justify-center max-w-screen-3xl max-h-screen-3xl"
   >
-    <PortfolioLink
-      title="posty"
-      hoveredLink="{hoveredLink}"
-      handleLinkHover="{handleLinkHover}"
-      setCurrentVideo="{setCurrentVideo}"
-      setFloatingVideoVisibility="{setFloatingVideoVisibility}"
-    />
-    <PortfolioLink
-      title="notes"
-      hoveredLink="{hoveredLink}"
-      handleLinkHover="{handleLinkHover}"
-      setCurrentVideo="{setCurrentVideo}"
-      setFloatingVideoVisibility="{setFloatingVideoVisibility}"
-    />
+    <div>
+      <h1 class="blend text-4xl text-center text-gray-900 z-10">
+        Hi there<span class="wave">👋</span>! I am a web developer
+      </h1>
+      <p class="blend text-2xl text-center text-gray-900 z-10">
+        Please have a look at some of my works
+      </p>
+    </div>
+    <div
+      on:mouseover="{setWorkVisibility(true)}"
+      on:mouseout="{setWorkVisibility(false)}"
+      class="flex items-center justify-around text-center w-full h-1/2"
+    >
+      <PortfolioLink
+        title="posty"
+        hoveredLink="{hoveredLink}"
+        handleLinkHover="{handleLinkHover}"
+        setCurrentVideo="{setCurrentVideo}"
+        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+      />
+      <PortfolioLink
+        title="notes"
+        hoveredLink="{hoveredLink}"
+        handleLinkHover="{handleLinkHover}"
+        setCurrentVideo="{setCurrentVideo}"
+        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+      />
+    </div>
   </div>
 </div>
 
