@@ -87,7 +87,7 @@
   >
     <div
       id="video"
-      class="w-96 h-96 xl:w-150 xl:h-150 border border-gray-200 pointer-events-none overflow-hidden {isAnimatedScaling} {isRound}"
+      class="w-96 h-96 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimatedScaling} {isRound}"
       style="transform: scale({scale})"
     >
       <video
