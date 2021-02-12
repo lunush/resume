@@ -22,7 +22,7 @@
   out:fade="{{ duration: 500 }}"
   class="flex h-screen w-screen justify-center items-center"
 >
-  <div class="absolute p-8 left-0 top-0">
+  <div class="absolute p-8 left-0 top-0 z-10">
     <Link
       to="/"
       class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 hover:text-gray-500 transition duration-500 ease-in-out"
@@ -57,7 +57,7 @@
           >
             <a
               class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 transition duration-500 ease-in-out"
-              href="">Source Code</a
+              href="">Source</a
             >
           </div>
         </div>
