@@ -10,7 +10,7 @@
 
 <div
   on:mouseover="{() => (currentVideo = title)}"
-  class="blend flex flex-wrap content-center justify-center w-full h-full z-10"
+  class="blend-exclusion flex flex-wrap content-center justify-center w-full h-full z-10"
 >
   <div
     on:mouseover="{() => (hoveredLink = title)}"
@@ -23,9 +23,3 @@
     >
   </div>
 </div>
-
-<style>
-  .blend {
-    mix-blend-mode: exclusion;
-  }
-</style>

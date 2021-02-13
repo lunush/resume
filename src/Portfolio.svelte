@@ -33,7 +33,7 @@
       <h1 class="blend text-4xl text-center text-gray-900 z-10">
         Hi there<span class="wave">👋</span>! I am a web developer
       </h1>
-      <p class="blend text-2xl text-center text-gray-900 z-10">
+      <p class="blend-exclusion text-2xl text-center text-gray-900 z-10">
         Please have a look at some of my works
       </p>
     </div>
@@ -49,10 +49,6 @@
 </div>
 
 <style>
-  .blend {
-    mix-blend-mode: exclusion;
-  }
-
   .wave {
     animation: wave-animation 2.5s infinite;
     transform-origin: 70% 70%;

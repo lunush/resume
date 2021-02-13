@@ -1,6 +1,6 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     fontFamily: {
       sans: ['Octarine'],
@@ -26,5 +26,5 @@ module.exports = {
       textColor: ['visited'],
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-blend-mode')()],
 };
