@@ -3,11 +3,11 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
-      sans: ['Octarine'],
-      serif: ['Octarine'],
-      mono: ['Octarine'],
-      display: ['Octarine'],
-      body: ['Octarine'],
+      sans: ['Poppins'],
+      serif: ['Poppins'],
+      mono: ['Poppins'],
+      display: ['Poppins'],
+      body: ['Poppins'],
     },
     extend: {
       maxWidth: {

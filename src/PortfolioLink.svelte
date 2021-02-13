@@ -18,7 +18,7 @@
   >
     <Link
       to="/{title}"
-      class="text-5xl font-thin {isInverted} no-underline uppercase link hover:no-underline visited:{isInverted}"
+      class="text-5xl {isInverted} no-underline uppercase link hover:no-underline visited:{isInverted}"
       >{title}</Link
     >
   </div>
