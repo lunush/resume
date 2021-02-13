@@ -64,8 +64,8 @@
         class="h-full w-full flex flex-col justify-center items-center
         min-h-2/3 md:min-h-0"
       >
-        <h1 class="mb-8 text-5xl text-gray-900 text-center">Notes</h1>
-        <p class="mb-8 px-8 text-2xl text-gray-900 text-center">
+        <h1 class="mb-12 text-5xl text-gray-900 text-center">Notes</h1>
+        <p class="mb-12 px-8 text-2xl text-gray-900 text-center">
           A very simple note-taking app. It is a progressive web app (PWA) with
           persistent storage, so it can be used without internet connection.
         </p>
