@@ -12,18 +12,34 @@
   let isAppVisible = false;
   let isPortfolioWorkFadeAnimated = false;
   let currentVideo = 'notes';
-  let hoveredLink;
-  let videoAnchor;
+  let hoveredLink = '';
+  let videoAnchor = null;
+  let videoElement = null;
+  let videoCenterX = 0;
+  let videoCenterY = 0;
+  let videoLeft = 0;
+  let videoTop = 0;
+  let isAnimated = false;
+  let isOnLink = false;
 
-  const setFloatingVideoVisibility = value => (isFloatingVideoVisible = value);
+  const setVideoPositionRelativeToVideoAnchorCenter = () => {
+    const videoAnchorRect = document
+      .getElementById('video-anchor')
+      .getBoundingClientRect();
 
-  const setVideoAnchor = value => (videoAnchor = value);
+    const videoAnchorCenterX =
+      Math.round(videoAnchorRect.left) + Math.round(videoAnchorRect.width / 2);
+    const videoAnchorCenterY =
+      Math.round(videoAnchorRect.top) + Math.round(videoAnchorRect.height / 2);
 
-  const setWorkVisibility = value => (isWorkPreviewVisible = value);
+    videoCenterX = Math.round(document.getElementById('video').offsetWidth / 2);
+    videoCenterY = Math.round(
+      document.getElementById('video').offsetHeight / 2
+    );
 
-  const handleLinkHover = title => (hoveredLink = title);
-
-  const setCurrentVideo = title => (currentVideo = title);
+    videoLeft = videoAnchorCenterX - videoCenterX;
+    videoTop = videoAnchorCenterY - videoCenterY;
+  };
 
   setTimeout(() => {
     isAppVisible = true;
@@ -32,6 +48,8 @@
   setTimeout(() => {
     isPortfolioWorkFadeAnimated = true;
   }, 1000);
+
+  $: isOnLink = hoveredLink !== '';
 </script>
 
 <Router url="{url}">
@@ -41,32 +59,43 @@
       class="w-screen h-screen overflow-hidden"
     >
       <PortfolioWorkVideo
-        videoAnchor="{videoAnchor}"
-        isWorkPreviewVisible="{isWorkPreviewVisible}"
-        isOnLink="{hoveredLink}"
-        isFloatingVideoVisible="{isFloatingVideoVisible}"
+        bind:videoCenterX
+        bind:videoCenterY
+        bind:videoLeft
+        bind:videoTop
+        bind:videoElement
+        bind:videoAnchor
+        bind:isAnimated
+        bind:isOnLink
+        bind:isWorkPreviewVisible
+        bind:isFloatingVideoVisible
+        setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
       />
       <Route path="/notes"
         ><PortfolioWork
-          isPortfolioWorkFadeAnimated="{isPortfolioWorkFadeAnimated}"
-          setVideoAnchor="{setVideoAnchor}"
-          setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+          bind:isAnimated
+          bind:videoAnchor
+          bind:isFloatingVideoVisible
+          bind:isPortfolioWorkFadeAnimated
+          setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
         />
       </Route>
       <Route path="/posty"
         ><PortfolioWork
-          isPortfolioWorkFadeAnimated="{isPortfolioWorkFadeAnimated}"
-          setVideoAnchor="{setVideoAnchor}"
-          setFloatingVideoVisibility="{setFloatingVideoVisibility}"
+          bind:isAnimated
+          setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
+          bind:isFloatingVideoVisible
+          bind:isPortfolioWorkFadeAnimated
+          bind:videoAnchor
         />
       </Route>
       <Route path="/">
         <Portfolio
-          setWorkVisibility="{setWorkVisibility}"
-          setFloatingVideoVisibility="{setFloatingVideoVisibility}"
-          handleLinkHover="{handleLinkHover}"
-          setCurrentVideo="{setCurrentVideo}"
-          hoveredLink="{hoveredLink}"
+          bind:isAnimated
+          bind:isFloatingVideoVisible
+          bind:hoveredLink
+          bind:isWorkPreviewVisible
+          bind:currentVideo
         />
       </Route>
       <Route path="*" component="{ErrorPage}" />

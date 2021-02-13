@@ -5,18 +5,19 @@
   import PortfolioLink from './PortfolioLink.svelte';
 
   export let hoveredLink;
-  export let setWorkVisibility;
-  export let setFloatingVideoVisibility;
-  export let handleLinkHover;
-  export let setCurrentVideo;
+  export let currentVideo;
+  export let isAnimated;
+  export let isFloatingVideoVisible;
+  export let isWorkPreviewVisible;
 
   onMount(() => {
-    setFloatingVideoVisibility(true);
+    isFloatingVideoVisible = true;
+    isAnimated = true;
   });
 
   onDestroy(() => {
-    setWorkVisibility(false);
-    handleLinkHover('');
+    isWorkPreviewVisible = false;
+    hoveredLink = '';
   });
 </script>
 
@@ -37,24 +38,12 @@
       </p>
     </div>
     <div
-      on:mouseover="{setWorkVisibility(true)}"
-      on:mouseout="{setWorkVisibility(false)}"
+      on:mouseover="{() => (isWorkPreviewVisible = true)}"
+      on:mouseout="{() => (isWorkPreviewVisible = false)}"
       class="flex items-center justify-around text-center w-full h-1/2"
     >
-      <PortfolioLink
-        title="posty"
-        hoveredLink="{hoveredLink}"
-        handleLinkHover="{handleLinkHover}"
-        setCurrentVideo="{setCurrentVideo}"
-        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
-      />
-      <PortfolioLink
-        title="notes"
-        hoveredLink="{hoveredLink}"
-        handleLinkHover="{handleLinkHover}"
-        setCurrentVideo="{setCurrentVideo}"
-        setFloatingVideoVisibility="{setFloatingVideoVisibility}"
-      />
+      <PortfolioLink title="posty" bind:hoveredLink bind:currentVideo />
+      <PortfolioLink title="notes" bind:hoveredLink bind:currentVideo />
     </div>
   </div>
 </div>

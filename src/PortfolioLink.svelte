@@ -1,9 +1,7 @@
 <script>
   import { Link } from 'svelte-routing';
 
-  export let setCurrentVideo;
-  export let setFloatingVideoVisibility;
-  export let handleLinkHover;
+  export let currentVideo;
   export let hoveredLink;
   export let title;
 
@@ -11,16 +9,15 @@
 </script>
 
 <div
-  on:mouseover="{() => setCurrentVideo(title)}"
+  on:mouseover="{() => (currentVideo = title)}"
   class="blend flex flex-wrap content-center justify-center w-full h-full z-10"
 >
   <div
-    on:mouseover="{() => handleLinkHover(title)}"
-    on:mouseout="{() => handleLinkHover('')}"
+    on:mouseover="{() => (hoveredLink = title)}"
+    on:mouseout="{() => (hoveredLink = '')}"
   >
     <Link
       to="/{title}"
-      on:click="{() => setFloatingVideoVisibility(false)}"
       class="text-5xl font-thin {isInverted} no-underline uppercase link hover:no-underline visited:{isInverted}"
       >{title}</Link
     >

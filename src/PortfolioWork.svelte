@@ -3,19 +3,40 @@
   import { fade } from 'svelte/transition';
   import { Link } from 'svelte-routing';
 
+  export let setVideoPositionRelativeToVideoAnchorCenter;
   export let isPortfolioWorkFadeAnimated;
-  export let setFloatingVideoVisibility;
-  export let setVideoAnchor;
+  export let isFloatingVideoVisible;
+  export let isAnimated;
+  export let videoAnchor;
 
   let fadeDelay = 2000;
+  let isAnchorAtTop = window.innerWidth < 768;
+
+  const checkIfSmall = () => (isAnchorAtTop = window.innerWidth < 768);
 
   onMount(() => {
-    setVideoAnchor(document.getElementById('video-anchor'));
-    setFloatingVideoVisibility(false);
+    videoAnchor = document.getElementById('video-anchor');
+
+    videoAnchor.parentElement.addEventListener('scroll', () => {
+      setVideoPositionRelativeToVideoAnchorCenter();
+    });
+
+    isFloatingVideoVisible = false;
+    setTimeout(
+      () => {
+        setVideoPositionRelativeToVideoAnchorCenter();
+      },
+      isAnimated ? 1000 : 0
+    );
+    setTimeout(() => {
+      isAnimated = false;
+    }, 2000);
   });
 
   $: if (!isPortfolioWorkFadeAnimated) fadeDelay = 0;
 </script>
+
+<svelte:window on:resize="{checkIfSmall}" />
 
 <div
   in:fade="{{ delay: fadeDelay, duration: 500 }}"
@@ -32,8 +53,17 @@
   <div
     class="relative flex flex-col w-full h-full max-w-screen-3xl max-h-screen-3xl"
   >
-    <div class="w-full h-full flex">
-      <div class="h-full w-full flex flex-col justify-center items-center">
+    <div
+      class="w-full h-full flex flex-col md:flex-row overflow-y-scroll
+      md:overflow-hidden"
+    >
+      {#if isAnchorAtTop}
+        <div id="video-anchor" class="h-full w-full mr-16 min-h-2/3"></div>
+      {/if}
+      <div
+        class="h-full w-full flex flex-col justify-center items-center
+        min-h-2/3 md:min-h-0"
+      >
         <h1 class="mb-8 text-5xl text-gray-900 text-center">Notes</h1>
         <p class="mb-8 px-8 text-2xl text-gray-900 text-center">
           A very simple note-taking app. It is a progressive web app (PWA) with
@@ -62,7 +92,9 @@
           </div>
         </div>
       </div>
-      <div id="video-anchor" class="h-full w-full mr-16"></div>
+      {#if !isAnchorAtTop}
+        <div id="video-anchor" class="h-full w-full"></div>
+      {/if}
     </div>
   </div>
 </div>

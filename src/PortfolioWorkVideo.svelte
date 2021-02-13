@@ -2,17 +2,17 @@
   import { onMount } from 'svelte';
   import { Link } from 'svelte-routing';
 
+  export let setVideoPositionRelativeToVideoAnchorCenter;
+  export let videoCenterX;
+  export let videoCenterY;
+  export let videoLeft;
+  export let videoTop;
   export let isWorkPreviewVisible;
   export let isFloatingVideoVisible;
   export let videoAnchor;
+  export let videoElement;
   export let isOnLink;
-
-  let videoElement;
-  let isAnimated = false;
-  let videoCenterX = 0;
-  let videoCenterY = 0;
-  let videoLeft = 0;
-  let videoTop = 0;
+  export let isAnimated;
 
   onMount(() => {
     videoElement = document.getElementById('video');
@@ -23,20 +23,8 @@
 
     setTimeout(() => {
       isAnimated = true;
-    }, 200);
+    }, 100);
   });
-
-  const setVideoPositionRelativeToVideoAnchorCenter = () => {
-    const videoAnchorRect = videoAnchor.getBoundingClientRect();
-    const videoAnchorCenterX = videoAnchorRect.left + videoAnchorRect.width / 2;
-    const videoAnchorCenterY = videoAnchorRect.top + videoAnchorRect.height / 2;
-
-    videoCenterX = Math.round(videoElement.offsetWidth / 2);
-    videoCenterY = Math.round(videoElement.offsetHeight / 2);
-
-    videoLeft = videoAnchorCenterX - videoCenterX;
-    videoTop = videoAnchorCenterY - videoCenterY;
-  };
 
   const followCursorMove = e => {
     if (isFloatingVideoVisible) {
@@ -44,35 +32,6 @@
       videoTop = e.clientY - videoCenterY;
     }
   };
-
-  $: if (!isFloatingVideoVisible) {
-    setTimeout(
-      () => {
-        setVideoPositionRelativeToVideoAnchorCenter();
-      },
-      isAnimated ? 1000 : 0
-    );
-  }
-
-  $: scale = isFloatingVideoVisible
-    ? isWorkPreviewVisible
-      ? isOnLink
-        ? '.5'
-        : '.3'
-      : '0'
-    : '1';
-
-  $: isAnimatedMovement = isFloatingVideoVisible
-    ? ''
-    : isAnimated
-    ? 'transition-all duration-1000 ease-in-out'
-    : '';
-
-  $: isAnimatedScaling = isAnimated
-    ? 'transition-all duration-1000 ease-in-out'
-    : '';
-
-  $: isRound = isFloatingVideoVisible ? 'rounded-full' : '';
 </script>
 
 <svelte:window
@@ -82,13 +41,25 @@
 
 <div class="fixed">
   <div
-    class="absolute {isAnimatedMovement}"
+    class="absolute {isFloatingVideoVisible
+      ? ''
+      : isAnimated
+      ? 'transition-all duration-1000 ease-in-out'
+      : ''}"
     style="transform: translate({videoLeft}px, {videoTop}px);"
   >
     <div
       id="video"
-      class="w-96 h-96 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimatedScaling} {isRound}"
-      style="transform: scale({scale})"
+      class="w-96 h-96 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimated
+        ? 'transition-all duration-1000 ease-in-out'
+        : ''} {isFloatingVideoVisible ? 'rounded-full' : ''}"
+      style="transform: scale({isFloatingVideoVisible
+        ? isWorkPreviewVisible
+          ? isOnLink
+            ? '.5'
+            : '.3'
+          : '0'
+        : '1'})"
     >
       <video
         class="object-fill w-full h-full"
