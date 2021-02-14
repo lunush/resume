@@ -7,11 +7,11 @@
   export let hoveredLink;
   export let currentVideo;
   export let isAnimated;
-  export let isFloatingVideoVisible;
+  export let isVideoFloating;
   export let isWorkPreviewVisible;
 
   onMount(() => {
-    isFloatingVideoVisible = true;
+    isVideoFloating = true;
     isAnimated = true;
   });
 

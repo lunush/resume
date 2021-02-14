@@ -6,36 +6,29 @@
   import PortfolioWork from './PortfolioWork.svelte';
   import PortfolioWorkVideo from './PortfolioWorkVideo.svelte';
 
-  export let url = '';
-  let isWorkPreviewVisible = false;
-  let isFloatingVideoVisible = false;
   let isAppVisible = false;
-  let isPortfolioWorkFadeAnimated = false;
-  let currentVideo = 'notes';
-  let hoveredLink = '';
   let videoAnchor = null;
   let videoElement = null;
   let videoCenterX = 0;
   let videoCenterY = 0;
   let videoLeft = 0;
   let videoTop = 0;
+  let isWorkPreviewVisible = false;
+  let isVideoFloating = false;
+  let isPortfolioWorkFadeAnimated = false;
+  let currentVideo = 'notes';
+  let hoveredLink = '';
   let isAnimated = false;
   let isOnLink = false;
 
   const setVideoPositionRelativeToVideoAnchorCenter = () => {
-    const videoAnchorRect = document
-      .getElementById('video-anchor')
-      .getBoundingClientRect();
+    const videoAnchorRect = videoAnchor.getBoundingClientRect();
 
-    const videoAnchorCenterX =
-      Math.round(videoAnchorRect.left) + Math.round(videoAnchorRect.width / 2);
-    const videoAnchorCenterY =
-      Math.round(videoAnchorRect.top) + Math.round(videoAnchorRect.height / 2);
+    const videoAnchorCenterX = videoAnchorRect.left + videoAnchorRect.width / 2;
+    const videoAnchorCenterY = videoAnchorRect.top + videoAnchorRect.height / 2;
 
-    videoCenterX = Math.round(document.getElementById('video').offsetWidth / 2);
-    videoCenterY = Math.round(
-      document.getElementById('video').offsetHeight / 2
-    );
+    videoCenterX = videoElement.offsetWidth / 2;
+    videoCenterY = videoElement.offsetHeight / 2;
 
     videoLeft = videoAnchorCenterX - videoCenterX;
     videoTop = videoAnchorCenterY - videoCenterY;
@@ -52,7 +45,9 @@
   $: isOnLink = hoveredLink !== '';
 </script>
 
-<Router url="{url}">
+<svelte:window on:resize="{setVideoPositionRelativeToVideoAnchorCenter}" />
+
+<Router>
   {#if isAppVisible}
     <div
       transition:fade="{{ duration: 1000 }}"
@@ -64,18 +59,16 @@
         bind:videoLeft
         bind:videoTop
         bind:videoElement
-        bind:videoAnchor
         bind:isAnimated
         bind:isOnLink
         bind:isWorkPreviewVisible
-        bind:isFloatingVideoVisible
-        setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
+        bind:isVideoFloating
       />
       <Route path="/notes"
         ><PortfolioWork
           bind:isAnimated
           bind:videoAnchor
-          bind:isFloatingVideoVisible
+          bind:isVideoFloating
           bind:isPortfolioWorkFadeAnimated
           setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
         />
@@ -84,7 +77,7 @@
         ><PortfolioWork
           bind:isAnimated
           setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
-          bind:isFloatingVideoVisible
+          bind:isVideoFloating
           bind:isPortfolioWorkFadeAnimated
           bind:videoAnchor
         />
@@ -92,7 +85,7 @@
       <Route path="/">
         <Portfolio
           bind:isAnimated
-          bind:isFloatingVideoVisible
+          bind:isVideoFloating
           bind:hoveredLink
           bind:isWorkPreviewVisible
           bind:currentVideo

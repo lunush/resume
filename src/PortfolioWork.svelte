@@ -4,15 +4,12 @@
   import { Link } from 'svelte-routing';
 
   export let setVideoPositionRelativeToVideoAnchorCenter;
+  export let isVideoFloating;
   export let isPortfolioWorkFadeAnimated;
-  export let isFloatingVideoVisible;
   export let isAnimated;
   export let videoAnchor;
 
   let fadeDelay = 2000;
-  let isAnchorAtTop = window.innerWidth < 768;
-
-  const checkIfSmall = () => (isAnchorAtTop = window.innerWidth < 768);
 
   onMount(() => {
     videoAnchor = document.getElementById('video-anchor');
@@ -21,22 +18,24 @@
       setVideoPositionRelativeToVideoAnchorCenter();
     });
 
-    isFloatingVideoVisible = false;
+    isVideoFloating = false;
+
     setTimeout(
       () => {
         setVideoPositionRelativeToVideoAnchorCenter();
       },
       isAnimated ? 1000 : 0
     );
-    setTimeout(() => {
-      isAnimated = false;
-    }, 2000);
+
+    isAnimated &&
+      setTimeout(() => {
+        isAnimated = false;
+      }, 2000);
   });
 
   $: if (!isPortfolioWorkFadeAnimated) fadeDelay = 0;
+  $: isAnchorAtTop = window.innerWidth < 768;
 </script>
-
-<svelte:window on:resize="{checkIfSmall}" />
 
 <div
   in:fade="{{ delay: fadeDelay, duration: 500 }}"
@@ -60,10 +59,7 @@
       {#if isAnchorAtTop}
         <div id="video-anchor" class="h-full w-full mr-16 min-h-2/3"></div>
       {/if}
-      <div
-        class="h-full w-full flex flex-col justify-center items-center
-        min-h-2/3 md:min-h-0"
-      >
+      <div class="h-full w-full flex flex-col justify-center items-center">
         <h1 class="mb-12 text-5xl text-gray-900 text-center">Notes</h1>
         <p class="mb-12 px-8 text-2xl text-gray-900 text-center">
           A very simple note-taking app. It is a progressive web app (PWA) with

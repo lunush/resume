@@ -2,46 +2,36 @@
   import { onMount } from 'svelte';
   import { Link } from 'svelte-routing';
 
-  export let setVideoPositionRelativeToVideoAnchorCenter;
   export let videoCenterX;
   export let videoCenterY;
   export let videoLeft;
   export let videoTop;
   export let isWorkPreviewVisible;
-  export let isFloatingVideoVisible;
-  export let videoAnchor;
+  export let isVideoFloating;
   export let videoElement;
   export let isOnLink;
   export let isAnimated;
 
   onMount(() => {
     videoElement = document.getElementById('video');
-
-    // transform: translate(-50%, -50%)
-    videoCenterX = Math.round(videoElement.offsetWidth / 2);
-    videoCenterY = Math.round(videoElement.offsetHeight / 2);
-
-    setTimeout(() => {
-      isAnimated = true;
-    }, 100);
   });
 
   const followCursorMove = e => {
-    if (isFloatingVideoVisible) {
+    if (isVideoFloating) {
+      videoCenterX = videoElement.offsetWidth / 2;
+      videoCenterY = videoElement.offsetHeight / 2;
+
       videoLeft = e.clientX - videoCenterX;
       videoTop = e.clientY - videoCenterY;
     }
   };
 </script>
 
-<svelte:window
-  on:resize="{setVideoPositionRelativeToVideoAnchorCenter}"
-  on:mousemove="{followCursorMove}"
-/>
+<svelte:window on:mousemove="{followCursorMove}" />
 
 <div class="fixed">
   <div
-    class="absolute {isFloatingVideoVisible
+    class="absolute {isVideoFloating
       ? ''
       : isAnimated
       ? 'transition-all duration-1000 ease-in-out'
@@ -52,8 +42,8 @@
       id="video"
       class="w-96 h-96 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimated
         ? 'transition-all duration-1000 ease-in-out'
-        : ''} {isFloatingVideoVisible ? 'rounded-full' : ''}"
-      style="transform: scale({isFloatingVideoVisible
+        : ''} {isVideoFloating ? 'rounded-full' : ''}"
+      style="transform: scale({isVideoFloating
         ? isWorkPreviewVisible
           ? isOnLink
             ? '.5'
