@@ -40,7 +40,7 @@
   >
     <div
       id="video"
-      class="w-96 h-96 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimated
+      class="w-96 h-96 sm:w-120 sm:h-120 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimated
         ? 'transition-all duration-1000 ease-in-out'
         : ''} {isVideoFloating ? 'rounded-full' : ''}"
       style="transform: scale({isVideoFloating
@@ -56,7 +56,7 @@
         src="assets/video/notes.mp4"
         preload="auto"
         loop
-        autoplay></video>
+        autoplay="autoplay"></video>
     </div>
   </div>
 </div>
