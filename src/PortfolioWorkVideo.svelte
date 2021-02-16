@@ -56,6 +56,7 @@
         src="assets/video/notes.mp4"
         preload="auto"
         loop
+        muted
         autoplay="autoplay"></video>
     </div>
   </div>
