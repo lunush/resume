@@ -13,8 +13,19 @@
   export let currentVideo;
   export let works;
 
+  // Workaround to avoid annoying video animation on page load
+  let isVideoHidden = false;
+
   onMount(() => {
     videoElement = document.getElementById('video');
+
+    if (location.pathname === '/') {
+      isVideoHidden = true;
+
+      setTimeout(() => {
+        isVideoHidden = false;
+      }, 500);
+    }
   });
 
   const followCursorMove = e => {
@@ -42,7 +53,9 @@
     <div
       id="video"
       class="w-96 h-96 sm:w-120 sm:h-120 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimated
-        ? 'transition-all duration-1000 ease-in-out'
+        ? isVideoHidden
+          ? ''
+          : 'transition-all duration-1000 ease-in-out'
         : ''} {isVideoFloating ? 'rounded-full' : ''}"
       style="transform: scale({isVideoFloating
         ? isWorkPreviewVisible
