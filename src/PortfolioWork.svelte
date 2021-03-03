@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import { Link } from 'svelte-routing';
+  import techIcons from './techIcons.ts';
 
   export let setVideoPositionRelativeToVideoAnchorCenter;
   export let isVideoFloating;
@@ -67,7 +68,7 @@
         <p class="mb-12 px-8 text-2xl text-gray-900 text-center">
           {work.description}
         </p>
-        <div class="w-full flex justify-around items-middle">
+        <div class="mb-12 w-full flex justify-around items-middle">
           <div class="relative flex items-center">
             <div
               class="hover:scale-125 transform transition-all duration-500 ease-in-out
@@ -88,6 +89,19 @@
               href="{work.sourceLink}">Source</a
             >
           </div>
+        </div>
+        <div
+          class="h-20 w-full flex justify-around items-center align-middle overflow-hidden"
+        >
+          {#each work.technologies as tech}
+            <div class="h-20 w-20" title="{techIcons[tech].title}">
+              <img
+                class="object-fill w-full h-full"
+                src="assets/icons/{techIcons[tech].fileName}"
+                alt="{techIcons[tech].title}"
+              />
+            </div>
+          {/each}
         </div>
       </div>
       {#if !isAnchorAtTop}

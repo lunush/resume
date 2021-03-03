@@ -9,6 +9,13 @@ export default [
       'A social media platform. It is a full stack application with all the necessary functionality as well as some neat features such as AI generated profile picture.',
     demoLink: '',
     sourceLink: '',
+    technologies: [
+      'typescript',
+      'reactNativeWeb',
+      'apollo',
+      'express',
+      'kubernetes',
+    ],
   },
   {
     title: 'Notes',
@@ -18,5 +25,6 @@ export default [
       'A simple note-taking app. It is a progressive web app with persistent storage, so it can be used without internet connection.',
     demoLink: '',
     sourceLink: '',
+    technologies: ['javascript', 'react', 'styledComponents', 'jest'],
   },
 ];
