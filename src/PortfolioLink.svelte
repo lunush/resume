@@ -3,23 +3,24 @@
 
   export let currentVideo;
   export let hoveredLink;
-  export let title;
+  export let work;
 
-  $: isInverted = hoveredLink === title ? 'text-gray-100' : 'text-gray-900';
+  $: isInverted =
+    hoveredLink === work.videoFile ? 'text-gray-100' : 'text-gray-900';
 </script>
 
 <div
-  on:mouseover="{() => (currentVideo = title)}"
+  on:mouseover="{() => (currentVideo = work.videoFile)}"
   class="blend-exclusion flex flex-wrap content-center justify-center w-full h-full z-10"
 >
   <div
-    on:mouseover="{() => (hoveredLink = title)}"
+    on:mouseover="{() => (hoveredLink = work.videoFile)}"
     on:mouseout="{() => (hoveredLink = '')}"
   >
     <Link
-      to="/{title}"
+      to="/{work.route}"
       class="text-5xl {isInverted} no-underline uppercase link hover:no-underline visited:{isInverted}"
-      >{title}</Link
+      >{work.title}</Link
     >
   </div>
 </div>

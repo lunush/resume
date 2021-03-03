@@ -10,6 +10,8 @@
   export let videoElement;
   export let isOnLink;
   export let isAnimated;
+  export let currentVideo;
+  export let works;
 
   onMount(() => {
     videoElement = document.getElementById('video');
@@ -50,13 +52,17 @@
           : '0'
         : '1'})"
     >
-      <video
-        class="object-fill w-full h-full"
-        src="assets/video/notes.mp4"
-        preload="auto"
-        loop
-        muted
-        autoplay="autoplay"></video>
+      {#each works as work}
+        <video
+          class="absolute {work.videoFile == currentVideo
+            ? 'z-10'
+            : 'z-0'} object-fill w-full h-full"
+          src="assets/video/{work.videoFile}.mp4"
+          preload="auto"
+          loop
+          muted
+          autoplay="autoplay"></video>
+      {/each}
     </div>
   </div>
 </div>

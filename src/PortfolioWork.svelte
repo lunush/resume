@@ -8,6 +8,7 @@
   export let isPortfolioWorkFadeAnimated;
   export let isAnimated;
   export let videoAnchor;
+  export let work;
 
   let fadeDelay = 2000;
 
@@ -60,10 +61,9 @@
         <div id="video-anchor" class="h-full w-full mr-16 min-h-2/3"></div>
       {/if}
       <div class="h-full w-full flex flex-col justify-center items-center">
-        <h1 class="mb-12 text-5xl text-gray-900 text-center">Notes</h1>
+        <h1 class="mb-12 text-5xl text-gray-900 text-center">{work.title}</h1>
         <p class="mb-12 px-8 text-2xl text-gray-900 text-center">
-          A very simple note-taking app. It is a progressive web app (PWA) with
-          persistent storage, so it can be used without internet connection.
+          {work.description}
         </p>
         <div class="w-full flex justify-around items-middle">
           <div class="relative flex items-center">
@@ -73,7 +73,7 @@
             >
               <a
                 class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 transition duration-500 ease-in-out"
-                href="">Demo</a
+                href="{work.demoLink}">Demo</a
               >
             </div>
           </div>
@@ -83,7 +83,7 @@
           >
             <a
               class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 transition duration-500 ease-in-out"
-              href="">Source</a
+              href="{work.sourceLink}">Source</a
             >
           </div>
         </div>

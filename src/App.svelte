@@ -5,6 +5,7 @@
   import Portfolio from './Portfolio.svelte';
   import PortfolioWork from './PortfolioWork.svelte';
   import PortfolioWorkVideo from './PortfolioWorkVideo.svelte';
+  import works from './works.ts';
 
   let isAppVisible = false;
   let videoAnchor = null;
@@ -16,7 +17,7 @@
   let isWorkPreviewVisible = false;
   let isVideoFloating = false;
   let isPortfolioWorkFadeAnimated = false;
-  let currentVideo = 'notes';
+  let currentVideo = window.location.pathname.substring(1);
   let hoveredLink = '';
   let isAnimated = false;
   let isOnLink = false;
@@ -63,25 +64,21 @@
         bind:isOnLink
         bind:isWorkPreviewVisible
         bind:isVideoFloating
+        bind:currentVideo
+        works="{works}"
       />
-      <Route path="/notes"
-        ><PortfolioWork
-          bind:isAnimated
-          bind:videoAnchor
-          bind:isVideoFloating
-          bind:isPortfolioWorkFadeAnimated
-          setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
-        />
-      </Route>
-      <Route path="/posty"
-        ><PortfolioWork
-          bind:isAnimated
-          setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
-          bind:isVideoFloating
-          bind:isPortfolioWorkFadeAnimated
-          bind:videoAnchor
-        />
-      </Route>
+      {#each works as work}
+        <Route path="/{work.route}"
+          ><PortfolioWork
+            bind:isAnimated
+            bind:videoAnchor
+            bind:isVideoFloating
+            bind:isPortfolioWorkFadeAnimated
+            work="{work}"
+            setVideoPositionRelativeToVideoAnchorCenter="{setVideoPositionRelativeToVideoAnchorCenter}"
+          />
+        </Route>
+      {/each}
       <Route path="/">
         <Portfolio
           bind:isAnimated
@@ -89,6 +86,7 @@
           bind:hoveredLink
           bind:isWorkPreviewVisible
           bind:currentVideo
+          works="{works}"
         />
       </Route>
       <Route path="*" component="{ErrorPage}" />

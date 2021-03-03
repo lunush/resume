@@ -8,6 +8,7 @@
   export let isAnimated;
   export let isVideoFloating;
   export let isWorkPreviewVisible;
+  export let works;
 
   onMount(() => {
     isVideoFloating = true;
@@ -41,8 +42,9 @@
       on:mouseout="{() => (isWorkPreviewVisible = false)}"
       class="flex items-center justify-around text-center w-full h-1/2"
     >
-      <PortfolioLink title="posty" bind:hoveredLink bind:currentVideo />
-      <PortfolioLink title="notes" bind:hoveredLink bind:currentVideo />
+      {#each works as work}
+        <PortfolioLink bind:hoveredLink bind:currentVideo work="{work}" />
+      {/each}
     </div>
   </div>
 </div>
