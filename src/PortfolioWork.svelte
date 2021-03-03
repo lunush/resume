@@ -60,7 +60,9 @@
       {#if isAnchorAtTop}
         <div id="video-anchor" class="h-full w-full mr-16 min-h-2/3"></div>
       {/if}
-      <div class="h-full w-full flex flex-col justify-center items-center">
+      <div
+        class="h-full w-full flex flex-col justify-center items-center mb-16"
+      >
         <h1 class="mb-12 text-5xl text-gray-900 text-center">{work.title}</h1>
         <p class="mb-12 px-8 text-2xl text-gray-900 text-center">
           {work.description}
