@@ -19,6 +19,10 @@ export default {
     title: 'Express',
     fileName: 'express.svg',
   },
+  mongodb: {
+    title: 'MongoDB',
+    fileName: 'mongodb.svg',
+  },
   javascript: {
     title: 'JavaScript',
     fileName: 'javascript.svg',
