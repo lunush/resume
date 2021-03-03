@@ -76,7 +76,8 @@
             >
               <a
                 class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 transition duration-500 ease-in-out"
-                href="{work.demoLink}">Demo</a
+                href="{work.demoLink}"
+                target="_blank">Demo</a
               >
             </div>
           </div>
@@ -86,7 +87,8 @@
           >
             <a
               class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 transition duration-500 ease-in-out"
-              href="{work.sourceLink}">Source</a
+              href="{work.sourceLink}"
+              target="_blank">Source</a
             >
           </div>
         </div>
