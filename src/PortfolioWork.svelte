@@ -71,22 +71,28 @@
         <div class="mb-12 w-full flex justify-around items-middle">
           <div class="relative flex items-center">
             <div
-              class="hover:scale-125 transform transition-all duration-500 ease-in-out
-            p-4 border hover:border-gray-900 rounded-lg"
+              class="p-4 border rounded-lg {work.demoLink
+                ? 'hover:scale-125 transform transition-all duration-500 ease-in-out hover:border-gray-900'
+                : ''}"
             >
               <a
-                class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 transition duration-500 ease-in-out"
+                class="text-2xl no-underline hover:no-underline transition duration-500 ease-in-out {work.demoLink
+                  ? 'text-gray-900 visited:text-gray-900'
+                  : 'text-gray-300 visited:text-gray-300 pointer-events-none'}"
                 href="{work.demoLink}"
                 target="_blank">Demo</a
               >
             </div>
           </div>
           <div
-            class="hover:scale-125 transform transition-all duration-500 ease-in-out
-            p-4 border hover:border-gray-900 rounded-lg"
+            class="p-4 border rounded-lg {work.sourceLink
+              ? 'hover:scale-125 transform transition-all duration-500 ease-in-out hover:border-gray-900'
+              : ''}"
           >
             <a
-              class="text-2xl text-gray-900 no-underline hover:no-underline visited:text-gray-900 transition duration-500 ease-in-out"
+              class="text-2xl no-underline hover:no-underline transition duration-500 ease-in-out {work.sourceLink
+                ? 'text-gray-900 visited:text-gray-900'
+                : 'text-gray-300 visited:text-gray-300 pointer-events-none'} "
               href="{work.sourceLink}"
               target="_blank">Source</a
             >
