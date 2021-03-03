@@ -57,7 +57,7 @@
           class="absolute {work.videoFile == currentVideo
             ? 'z-10'
             : 'z-0'} object-fill w-full h-full"
-          src="assets/video/{work.videoFile}.mp4"
+          src="assets/video/{work.videoFile}.webm"
           preload="auto"
           loop
           muted
