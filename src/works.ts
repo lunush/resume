@@ -23,8 +23,8 @@ export default [
     videoFile: 'notes',
     description:
       'A simple note-taking app. It is a progressive web app with persistent storage, so it can be used without internet connection.',
-    demoLink: '',
-    sourceLink: '',
+    demoLink: 'https://notes-blue.vercel.app/',
+    sourceLink: 'https://github.com/lunush/notes',
     technologies: ['javascript', 'react', 'styledComponents', 'jest'],
   },
 ];
