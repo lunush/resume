@@ -11,7 +11,7 @@
   export let videoAnchor;
   export let work;
 
-  let fadeDelay = 2000;
+  let animationDelay = 2000;
 
   onMount(() => {
     videoAnchor = document.getElementById('video-anchor');
@@ -35,12 +35,12 @@
       }, 2000);
   });
 
-  $: if (!isPortfolioWorkFadeAnimated) fadeDelay = 0;
+  $: if (!isPortfolioWorkFadeAnimated) animationDelay = 0;
   $: isAnchorAtTop = window.innerWidth < 768;
 </script>
 
 <div
-  in:fade="{{ delay: fadeDelay, duration: 500 }}"
+  in:fade="{{ delay: animationDelay, duration: 500 }}"
   out:fade="{{ duration: 500 }}"
   class="flex h-screen w-screen justify-center items-center"
 >
@@ -93,8 +93,14 @@
         <div
           class="h-20 w-full flex justify-around items-center align-middle overflow-hidden"
         >
-          {#each work.technologies as tech}
-            <div class="h-20 w-20" title="{techIcons[tech].title}">
+          {#each work.technologies as tech, i}
+            <div
+              class="h-20 w-20 duration-1000 ease-in-out"
+              title="{techIcons[tech].title}"
+              style="transform: translate(0, {isAnimated
+                ? '100%'
+                : '0'}); transition-delay: {i * 1}00ms"
+            >
               <img
                 class="object-fill w-full h-full"
                 src="assets/icons/{techIcons[tech].fileName}"
