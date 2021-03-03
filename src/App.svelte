@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { Router, Route, Link } from 'svelte-routing';
+  import { Router, Route } from 'svelte-routing';
   import ErrorPage from './ErrorPage.svelte';
   import Portfolio from './Portfolio.svelte';
   import PortfolioWork from './PortfolioWork.svelte';

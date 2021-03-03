@@ -1,6 +1,5 @@
 <script>
   import { onMount } from 'svelte';
-  import { Link } from 'svelte-routing';
 
   export let videoCenterX;
   export let videoCenterY;

@@ -1,5 +1,4 @@
 <script>
-  import { Link } from 'svelte-routing';
   import { onDestroy, onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import PortfolioLink from './PortfolioLink.svelte';
