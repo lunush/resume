@@ -2,20 +2,20 @@
 
 export default [
   {
-    title: 'Posty',
-    route: 'posty',
-    videoFile: 'posty',
+    title: 'Posty', // Title is used at '/' as text for PortfolioLink and in the work page
+    route: 'posty', // e.g. localhost:5000/posty
+    videoFile: 'posty', // assets/videos/posty.webm
     description:
       'A social media platform. It is a full stack application with all the necessary functionality as well as some neat features such as AI generated profile picture.',
     demoLink: '',
-    sourceLink: '',
+    sourceLink: 'https://github.com/lunush/posty',
     technologies: [
       'typescript',
       'reactNativeWeb',
       'apollo',
       'mongodb',
       'kubernetes',
-    ],
+    ], // Max 5 icons. They must be defined at ./techIcons.ts
   },
   {
     title: 'Notes',
