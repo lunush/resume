@@ -30,10 +30,12 @@
     class="h-full w-full flex flex-col items-center justify-center max-w-screen-3xl max-h-screen-3xl"
   >
     <div>
-      <h1 class="blend text-4xl text-center text-gray-900 z-10">
+      <h1 class="text-2xl sm:text-4xl mb-4 text-center text-gray-900 z-10">
         Hi there<span class="wave">👋</span>! I am a web developer
       </h1>
-      <p class="blend-exclusion text-2xl text-center text-gray-900 z-10">
+      <p
+        class="text-xl sm:text-2xl blend-exclusion text-center text-gray-900 z-10"
+      >
         Please have a look at some of my works
       </p>
     </div>

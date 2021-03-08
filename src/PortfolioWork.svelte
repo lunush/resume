@@ -12,6 +12,7 @@
   export let work;
 
   let animationDelay = 2000;
+  const MAX_DISPLAYED_TECHNOLOGIES = 4;
 
   onMount(() => {
     videoAnchor = document.getElementById('video-anchor');
@@ -59,10 +60,10 @@
       md:overflow-hidden"
     >
       {#if isAnchorAtTop}
-        <div id="video-anchor" class="h-full w-full mr-16 min-h-2/3"></div>
+        <div id="video-anchor" class="h-full w-full mt-12 min-h-2/3"></div>
       {/if}
       <div
-        class="h-full w-full flex flex-col justify-center items-center mb-16"
+        class="h-auto w-full mb-12 flex flex-col justify-center items-center"
       >
         <h1 class="mb-12 text-5xl text-gray-900 text-center">{work.title}</h1>
         <p class="mb-12 px-8 text-2xl text-gray-900 text-center">
@@ -102,19 +103,21 @@
           class="h-20 w-full flex justify-around items-center align-middle overflow-hidden"
         >
           {#each work.technologies as tech, i}
-            <div
-              class="h-20 w-20 duration-1000 ease-in-out"
-              title="{techIcons[tech].title}"
-              style="transform: translate(0, {isAnimated
-                ? '100%'
-                : '0'}); transition-delay: {i * 1}00ms"
-            >
-              <img
-                class="object-fill w-full h-full"
-                src="assets/icons/{techIcons[tech].fileName}"
-                alt="{techIcons[tech].title}"
-              />
-            </div>
+            {#if i < MAX_DISPLAYED_TECHNOLOGIES}
+              <div
+                class="h-16 w-16 sm:h-20 sm:w-20 duration-1000 ease-in-out"
+                title="{techIcons[tech].title}"
+                style="transform: translate(0, {isAnimated
+                  ? '100%'
+                  : '0'}); transition-delay: {i * 1}00ms"
+              >
+                <img
+                  class="object-fill w-full h-full"
+                  src="assets/icons/{techIcons[tech].fileName}"
+                  alt="{techIcons[tech].title}"
+                />
+              </div>
+            {/if}
           {/each}
         </div>
       </div>

@@ -9,13 +9,7 @@ export default [
       'A social media platform. It is a full stack application with all the necessary functionality as well as some neat features such as AI generated profile picture.',
     demoLink: 'https://posty.lunu.sh/',
     sourceLink: 'https://github.com/lunush/posty',
-    technologies: [
-      'typescript',
-      'reactNativeWeb',
-      'apollo',
-      'mongodb',
-      'kubernetes',
-    ], // Max 5 icons. They must be defined at ./techIcons.ts
+    technologies: ['typescript', 'reactNativeWeb', 'mongodb', 'kubernetes'], // Max 4 icons. They must be defined at ./techIcons.ts
   },
   {
     title: 'Notes',

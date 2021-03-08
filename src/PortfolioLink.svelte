@@ -19,7 +19,7 @@
   >
     <Link
       to="/{work.route}"
-      class="text-5xl {isInverted} no-underline uppercase link hover:no-underline visited:{isInverted}"
+      class="text-4xl sm:text-5xl {isInverted} no-underline uppercase link hover:no-underline visited:{isInverted}"
       >{work.title}</Link
     >
   </div>
