@@ -12,7 +12,6 @@
   export let work;
 
   let animationDelay = 2000;
-  const MAX_DISPLAYED_TECHNOLOGIES = 4;
 
   onMount(() => {
     videoAnchor = document.getElementById('video-anchor');
@@ -38,6 +37,7 @@
 
   $: if (!isPortfolioWorkFadeAnimated) animationDelay = 0;
   $: isAnchorAtTop = window.innerWidth < 768;
+  $: maxDisplayedTechnologies = window.innerWidth > 768 ? 5 : 4;
 </script>
 
 <div
@@ -103,7 +103,7 @@
           class="h-20 w-full flex justify-around items-center align-middle overflow-hidden"
         >
           {#each work.technologies as tech, i}
-            {#if i < MAX_DISPLAYED_TECHNOLOGIES}
+            {#if i < maxDisplayedTechnologies}
               <div
                 class="h-16 w-16 sm:h-20 sm:w-20 duration-1000 ease-in-out"
                 title="{techIcons[tech].title}"
