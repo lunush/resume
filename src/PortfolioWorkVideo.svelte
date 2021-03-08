@@ -52,7 +52,7 @@
   >
     <div
       id="video"
-      class="w-72 h-72 xs:w-80 xs:h-80 sm:w-120 sm:h-120 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimated
+      class="w-72 h-72 xs:w-90 xs:h-90 lg:w-120 lg:h-120 xl:w-150 xl:h-150 border pointer-events-none overflow-hidden {isAnimated
         ? isVideoHidden
           ? ''
           : 'transition-all duration-1000 ease-in-out'
