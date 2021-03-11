@@ -44,7 +44,7 @@
 <div class="fixed">
   <div
     class="absolute {isVideoFloating
-      ? ''
+      ? 'transition duration-300 ease-out'
       : isAnimated
       ? 'transition-all duration-1000 ease-in-out'
       : ''}"
