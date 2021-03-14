@@ -36,7 +36,7 @@
       <p
         class="text-xl sm:text-2xl blend-exclusion text-center text-gray-900 z-10"
       >
-        Please have a look at some of my works
+        Here are some of my works I'd like to share with you
       </p>
     </div>
     <div
