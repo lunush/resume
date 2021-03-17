@@ -3,7 +3,7 @@
 A personal portfolio made with Svelte
 
 ## Usage
-You are free to use it in any way you like as long as you make clear that you
+You are free to use it in any way you'd like as long as you make it clear that you
 are not the original author.
 
 ## Pull requests
