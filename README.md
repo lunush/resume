@@ -7,4 +7,4 @@ This repository does not accept pull requests. Feel free to fork it and tweak it
 as you see fit.
 
 ## License
-Apache 2.0
+MIT
