@@ -52,6 +52,7 @@
   <a
     class="absolute right-4 bottom-4"
     href="https://github.com/lunush/svelte-minimal-portfolio"
+    target="_blank"
     ><img class="w-8 h-8" src="assets/icons/github.svg" alt="Github Icon" /></a
   >
 </div>
