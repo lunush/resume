@@ -32,6 +32,5 @@
    * Use globals.d.ts instead of compilerOptions.types
    * to avoid limiting type declarations.
    */
-  "include": ["globals.d.ts", "src/**/*"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
+  "include": ["globals.d.ts", "src/**/*"]
 }
