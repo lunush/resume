@@ -74,7 +74,7 @@
           preload="auto"
           loop
           muted
-          autoplay="autoplay"></video>
+          autoplay></video>
       {/each}
     </div>
   </div>

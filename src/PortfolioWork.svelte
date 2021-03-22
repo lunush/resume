@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import { Link } from 'svelte-routing';
-  import techIcons from './techIcons.ts';
+  import techIcons from './techIcons';
 
   export let setVideoPositionRelativeToVideoAnchorCenter;
   export let isVideoFloating;

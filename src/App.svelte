@@ -5,7 +5,7 @@
   import Portfolio from './Portfolio.svelte';
   import PortfolioWork from './PortfolioWork.svelte';
   import PortfolioWorkVideo from './PortfolioWorkVideo.svelte';
-  import works from './works.ts';
+  import works from './works';
 
   let isAppVisible = false;
   let videoAnchor = null;
@@ -89,7 +89,7 @@
           works="{works}"
         />
       </Route>
-      <Route path="*" component="{ErrorPage}" />
+      <Route path="*"><ErrorPage /></Route>
     </div>
   {/if}
 </Router>
