@@ -3,6 +3,11 @@ const { screens } = require('tailwindcss/defaultTheme');
 module.exports = {
   purge: ['./public/**/*.html', './src/**/*.{js,ts,svelte}'],
   darkMode: false,
+  variants: {
+    extend: {
+      textColor: ['visited'],
+    },
+  },
   theme: {
     fontFamily: {
       sans: ['Poppins'],
